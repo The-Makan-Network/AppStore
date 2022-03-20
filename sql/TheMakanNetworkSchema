@@ -1,1 +1,2 @@
-CREATE table if exist
+CREATE Buyers table if exist
+CREATE Sellers table
