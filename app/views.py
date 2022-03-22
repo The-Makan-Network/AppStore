@@ -18,7 +18,7 @@ def index(request):
 
     result_dict = {'records': customers}
 
-    return render(request,'app/index.html',result_dict)
+    return render(request, 'app/index_user_admin.html', result_dict)
 
 # Create your views here.
 def view(request, id):
@@ -30,7 +30,7 @@ def view(request, id):
         customer = cursor.fetchone()
     result_dict = {'cust': customer}
 
-    return render(request,'app/view.html',result_dict)
+    return render(request, 'app/view_admin.html', result_dict)
 
 # Create your views here.
 def add(request):
@@ -57,7 +57,7 @@ def add(request):
 
     context['status'] = status
  
-    return render(request, "app/add.html", context)
+    return render(request, "app/new_user.html", context)
 
 # Create your views here.
 def edit(request, id):
@@ -89,4 +89,4 @@ def edit(request, id):
     context["obj"] = obj
     context["status"] = status
  
-    return render(request, "app/edit.html", context)
+    return render(request, "app/edit_admin.html", context)
