@@ -20,12 +20,12 @@
         </thead>
         {% for cust in records %}
         <tr>
-            <td> {{ product.5 }} </td>
-            <td> {{ product.0 }} </td>
-            <td> {{ product.1 }} </td>
-            <td> {{ product.2 }} </td>
+            <td> {{ cust.5 }} </td>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.1 }} </td>
+            <td> {{ cust.2 }} </td>
             <td>
-                <a href="purchase/{{ product.5 }}"><button>purchase</button></a>
+                <a href="purchase/{{ product }}"><button>purchase</button></a>
             </td>
         <tr>
         {% endfor %}
