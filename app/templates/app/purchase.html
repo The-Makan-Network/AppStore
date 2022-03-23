@@ -14,15 +14,15 @@
             <th>Category</th>
             <th>Min Orders</th>
         </thead>
-        {% for product in product %}
+        {% for cust in records %}
         <tr>
-            <td> {{ product.5 }} </td>
-            <td> {{ product.0 }} </td>
-            <td> {{ product.1 }} </td>
-            <td> {{ product.2 }} </td>
-            <td> {{ product.3 }} </td>
-            <td> {{ product.4 }} </td>
-            <td> {{ product.6 }} </td>
+            <td> {{ cust.5 }} </td>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.1 }} </td>
+            <td> {{ cust.2 }} </td>
+            <td> {{ cust.3 }} </td>
+            <td> {{ cust.4 }} </td>
+            <td> {{ cust.6 }} </td>
             <td>
                 <p style="color:red">{{ status|safe }}</p>
                 <!-- Create a Form -->
