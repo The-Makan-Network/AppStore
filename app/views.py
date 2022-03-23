@@ -114,3 +114,17 @@ def login(request):
                 status = 'Your User Id and Password is incorrect' % (request.POST['customerid'])
 
     return render(request, 'app/login.html', context)
+
+
+# Create your views here.
+def index_products(request):
+    """Shows the product listing page"""
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM product_listings ORDER BY productid")
+        customers = cursor.fetchall()
+
+    result_dict = {'records': product_listings}
+
+    return render(request, 'app/index_products.html', result_dict)
