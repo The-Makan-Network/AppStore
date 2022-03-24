@@ -18,12 +18,12 @@
             <th>Price</th>
             <th>Description</th>
         </thead>
-        {% for cust in records %}
+        {% for product in products %}
         <tr>
-            <td> {{ cust.5 }} </td>
-            <td> {{ cust.0 }} </td>
-            <td> {{ cust.1 }} </td>
-            <td> {{ cust.2 }} </td>
+            <td> {{ product.0 }} </td>
+            <td> {{ product.2 }} </td>
+            <td> {{ product.4 }} </td>
+            <td> {{ product.3 }} </td>
             <td>
                 <a href="purchase/{{ product }}"><button>purchase</button></a>
             </td>
