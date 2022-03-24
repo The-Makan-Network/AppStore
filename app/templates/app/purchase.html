@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase</title>
+</head>
+<body>
+    <table border=1>
+        <thead>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Allergen Notice</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Min Orders</th>
+        </thead>
+        {% for cust in records %}
+        <tr>
+            <td> {{ cust.5 }} </td>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.1 }} </td>
+            <td> {{ cust.2 }} </td>
+            <td> {{ cust.3 }} </td>
+            <td> {{ cust.4 }} </td>
+            <td> {{ cust.6 }} </td>
+            <td>
+                <p style="color:red">{{ status|safe }}</p>
+                <!-- Create a Form -->
+                <form method="POST">
+                <!-- Security token by Django -->
+                {% csrf_token %}
+                <!-- form -->
+                <div id="div_id_quantity" class="control-group"> <label for="id_quantity" class="control-label requiredField">
+                    Quantity<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="Quantity" maxlength="64" class="textinput textInput" required="" id="id_quantity"> </div> </div>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <button type="submit" value="Buy">Buy</button>
+</body>
+</html>

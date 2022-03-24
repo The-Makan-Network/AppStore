@@ -18,7 +18,7 @@ def index(request):
 
     result_dict = {'records': customers}
 
-    return render(request,'app/index.html',result_dict)
+    return render(request, 'app/index_user_admin.html', result_dict)
 
 # Create your views here.
 def view(request, id):
@@ -30,7 +30,7 @@ def view(request, id):
         customer = cursor.fetchone()
     result_dict = {'cust': customer}
 
-    return render(request,'app/view.html',result_dict)
+    return render(request, 'app/view_admin.html', result_dict)
 
 # Create your views here.
 def add(request):
@@ -57,7 +57,7 @@ def add(request):
 
     context['status'] = status
  
-    return render(request, "app/add.html", context)
+    return render(request, "app/new_user.html", context)
 
 # Create your views here.
 def edit(request, id):
@@ -89,4 +89,59 @@ def edit(request, id):
     context["obj"] = obj
     context["status"] = status
  
-    return render(request, "app/edit.html", context)
+    return render(request, "app/edit_admin.html", context)
+
+# Create your views here.
+def login(request):
+    """Shows the login page"""
+    context = {}
+    status = ''
+
+    if request.POST:
+        ## Check if customerid is already in the table
+        with connection.cursor() as cursor:
+
+            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
+            customer = cursor.fetchone()
+            ## No customer with same id
+            if customer == None:
+                ##TODO: date validation
+                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['first_name'], request.POST['last_name'], request.POST['email'],
+                           request.POST['dob'] , request.POST['since'], request.POST['customerid'], request.POST['country'] ])
+                return redirect('index')
+            else:
+                status = 'Your User Id and Password is incorrect' % (request.POST['customerid'])
+
+    return render(request, 'app/login.html', context)
+
+
+# Create your views here.
+def index_products(request):
+    """Shows the product listing page"""
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        customers = cursor.fetchall()
+
+    result_dict = {'records': customers}
+
+    return render(request, 'app/index_products.html', result_dict)
+
+def purchase(request):
+    """Shows the main page"""
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        customers = cursor.fetchall()
+
+    result_dict = {'records': customers}
+
+    return render(request, 'app/purchase.html', result_dict)
+
+def buy(request):
+    """This function enables the buy button on the purchase page"""
+    context = {}
+    status = ''
