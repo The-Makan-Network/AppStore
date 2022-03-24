@@ -120,10 +120,10 @@ def index_products(request):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers ORDER BY customerid")
+        cursor.execute("SELECT * FROM products ORDER BY productid")
         customers = cursor.fetchall()
 
-    result_dict = {'records': customers}
+    result_dict = {'records': products}
 
     return render(request, 'app/index_products.html', result_dict)
 
@@ -143,3 +143,4 @@ def buy(request):
     """This function enables the buy button on the purchase page"""
     context = {}
     status = ''
+    cursor.execute("INSERT INTO transaction VALUES (%s)"
