@@ -139,8 +139,3 @@ def purchase(request):
 
     return render(request, 'app/purchase.html', result_dict)
 
-def buy(request):
-    """This function enables the buy button on the purchase page"""
-    context = {}
-    status = ''
-    cursor.execute("INSERT INTO transaction VALUES (%s)"
