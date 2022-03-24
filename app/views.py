@@ -105,7 +105,7 @@ def login(request):
             customer = cursor.fetchone()
             ## No customer with same id
             if customer == None:
-                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute("INSERT INTO customers VALUES (%s, %s)"
                         , [request.POST['first_name'], request.POST['last_name']])
                 return redirect('index')
             else:
