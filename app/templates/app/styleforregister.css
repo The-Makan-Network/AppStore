@@ -2,10 +2,15 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-color:#6abadeba;  
+    background-color: lightblue;  
     font-family: 'Arial';  
-}  
-.login{  
+}
+
+h1{
+    color : blue;
+}
+
+.controls{  
         width: 382px;  
         overflow: hidden;  
         margin: auto;  
