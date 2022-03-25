@@ -2,15 +2,10 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-color: lightblue;  
+    background-color:#6abadeba;  
     font-family: 'Arial';  
-}
-
-h1{
-    color : blue;
-}
-
-.controls{  
+}  
+.login{  
         width: 382px;  
         overflow: hidden;  
         margin: auto;  
@@ -25,7 +20,7 @@ h2{
     color: #277582;  
     padding: 20px;  
 }  
-.label{  
+label{  
     color: #08ffd1;  
     font-size: 17px;  
 }  
