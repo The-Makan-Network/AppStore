@@ -132,7 +132,7 @@ def purchase(request, productid):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM product WHERE productid =  %s",[productid])
+        cursor.execute("SELECT * FROM products WHERE productid =  %s",[productid])
         products = cursor.fetchone()
 
     result_dict = {'products': products}
