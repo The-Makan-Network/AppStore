@@ -35,7 +35,7 @@ check(not b_id = s_id)
 );
 
 CREATE TABLE IF NOT EXISTS product_ratings (
-b_id references transaction
+b_id references transactions
 )
 
 
