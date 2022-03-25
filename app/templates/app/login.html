@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="styleforlogin.css">
+    <link rel="stylesheet" type=text/css href="styleforlogin.css">
+    <img src="{% static 'app/images/images.png' %}" width="10%"   alt="App Logo"/><br/>
+    <style type="test/css">
+    
+    body 
+{  
+    --color-primary: #009579;
+    --color-primary-dark: #007f67;
+    --color-secondary: #252c6a;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+    
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items:center;
+    font-size: 18px;
+    background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lifestyleasia.com%2Fsg%2Fliving%2Fpeople%2Fhome-based-business-singapore-circuit-breaker%2F&psig=AOvVaw1nyiQlqxU5c5Zw28vR7zZA&ust=1648299378967000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIj0uOun4fYCFQAAAAAdAAAAABAJ");
+    background-size: cover;
+}
+    </style>
+
 </head>
 <body>
-    <img src="{% static 'app/images/images.png' %}" width="10%"   alt="App Logo"/><br/>
     <div class="container">
         <form class="form" id="login">
             <h1 class="form__title">Login</h1>
@@ -19,10 +42,9 @@
                 <input type="password" class="form__input" autofocus placeholder="Password">
                 <div class="form__input-error-message"></div>
             </div>
-            <button class="form__button" type="submit" value="Login">login</button>
+            <button class="form__button" type="submit" value="Login">Login</button>
         </form>
     </div>
-    <h2>Login</h2>
     <a href="">Back to home</a>
     <a href="/add">Register</a>
 </body>
