@@ -9,7 +9,7 @@
 
     <p style="color:red">{{ status|safe }}</p>
     <!-- Create a Form -->
-    <form method="POST">
+    <form method="POST" class="login">
         <!-- Security token by Django -->
         {% csrf_token %}
         <!-- form -->
@@ -31,7 +31,7 @@
 
 <!-- testest -->
 
-<form action="action_page.php">
+<form action="action_page.php" class="label">
   <div class="container">
     <h1>Register</h1>
     <p>You're on your way to join our makan network family!</p>
