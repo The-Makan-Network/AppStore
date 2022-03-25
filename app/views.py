@@ -133,9 +133,9 @@ def purchase(request):
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customers ORDER BY customerid")
-        customers = cursor.fetchall()
+        products = cursor.fetchall()
 
-    result_dict = {'records': customers}
+    result_dict = {'products': products}
 
     return render(request, 'app/purchase.html', result_dict)
 
