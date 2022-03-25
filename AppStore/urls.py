@@ -28,5 +28,5 @@ urlpatterns = [
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
     path('login/', app.views.login, name='login'),
-    path('purchase/<str:id>', app.views.purchase, name='purchase'),
+    path('purchase/<int:productid>', app.views.purchase, name='purchase'),
 ]
