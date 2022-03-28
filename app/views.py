@@ -127,15 +127,15 @@ def index_products(request):
 
     return render(request, 'app/index_products.html', result_dict)
 
-def purchase(request):
+def purchase(request, productid):
     """Shows the main page"""
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers ORDER BY customerid")
-        customers = cursor.fetchall()
+        cursor.execute("SELECT * FROM products WHERE productid =  %s",[productid])
+        products = cursor.fetchone()
 
-    result_dict = {'records': customers}
+    result_dict = {'products': products}
 
     return render(request, 'app/purchase.html', result_dict)
 
