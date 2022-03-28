@@ -139,3 +139,4 @@ def purchase(request):
 
     return render(request, 'app/purchase.html', result_dict)
 
+def profile(request):

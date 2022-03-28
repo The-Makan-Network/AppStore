@@ -17,16 +17,19 @@ from django.contrib import admin
 from django.urls import path
 
 import app.views
-
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', app.views.index_products, name='products'),
-    ##path('', app.views.index, name='index'),
-    path('add/', app.views.add, name='add'),
-    ##path('buy/', app.views.buy, name='buy'),
+    path('accounts/', include("django.contrib.auth.urls")),
+    path('', app.views.index_products, name='products'), """Home page of the app"""
+    path('accounts/login/', auth_views.auth_login, name='login'),
+    path('accounts/logout/', auth_views.auth_logout, name='logout'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
+    path('add/', app.views.add, name='add'),
+    """path('Admin', app.views.index, name='index'),
+    path('buy/', app.views.buy, name='buy'),
     path('login/', app.views.login, name='login'),
-    path('purchase/', app.views.purchase, name='purchase'),
+    path('purchase/', app.views.purchase, name='purchase'),"""
 ]
