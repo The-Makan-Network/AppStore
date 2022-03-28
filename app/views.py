@@ -139,4 +139,11 @@ def purchase(request, productid):
 
     return render(request, 'app/purchase.html', result_dict)
 
-def profile(request):
+def profile(request, phoneno):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM allusers WHERE phoneno =  %s",[phoneno])
+        products = cursor.fetchone()
+
+    result_dict = {'allusers': allusers}
+
+    return render(request, 'app/profile.html', result_dict)
