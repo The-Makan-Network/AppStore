@@ -42,17 +42,16 @@ def add(request):
         ## Check if customerid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM customers WHERE customerid = %s", [request.POST['customerid']])
+            cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST['phoneno']])
             customer = cursor.fetchone()
             ## No customer with same id
             if customer == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        , [request.POST['first_name'], request.POST['last_name'], request.POST['email'],
-                           request.POST['dob'] , request.POST['since'], request.POST['customerid'], request.POST['country'] ])
-                return redirect('index')    
+                cursor.execute("INSERT INTO allusers VALUES (%s, %s, %s)"
+                               ,[request.POST['first_name'], request.POST['last_name'], request.POST['email']])
+                return redirect('login')
             else:
-                status = 'Customer with ID %s already exists' % (request.POST['customerid'])
+                status = 'Customer with phone number %s already exists' % (request.POST['phoneno'])
 
 
     context['status'] = status
