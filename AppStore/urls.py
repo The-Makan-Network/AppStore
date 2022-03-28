@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.index_products, name='products'),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("accounts/login/", auth_views.auth_login().as_view, name='login'),
+    path("accounts/login/", auth_views.login().as_view, name='login'),
     #path('', app.views.index, name='index'),
     path('add/', app.views.add, name='add'),
     #path('buy/', app.views.buy, name='buy'),
