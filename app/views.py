@@ -138,5 +138,3 @@ def purchase(request, productid):
     result_dict = {'products': products}
 
     return render(request, 'app/purchase.html', result_dict)
-
-"""def profile(request):
