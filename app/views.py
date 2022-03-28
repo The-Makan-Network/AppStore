@@ -43,9 +43,9 @@ def add(request):
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST['phoneno']])
-            customer = cursor.fetchone()
+            user = cursor.fetchone()
             ## No customer with same id
-            if customer == None:
+            if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers VALUES (%s, %s, %s)"
                                ,[request.POST['userid'], request.POST['password'], request.POST['phoneno']])
