@@ -151,5 +151,5 @@ STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
 import app.views
-LOGIN_REDIRECT_URL = ('profile/', app.views.profile),
-LOGOUT_REDIRECT_URL = ("products/"),
+LOGIN_REDIRECT_URL = ('profile/', app.views.profile, name='profile'),
+LOGOUT_REDIRECT_URL = "/"
