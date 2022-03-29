@@ -28,7 +28,7 @@ urlpatterns = [
     #path("accounts/login/", auth_views.login().as_view, name='login'),
     #path('login/', LoginView.as_view(template_name='app/login.html'), name='login'),
     #path('', app.views.index, name='index'),
-    path('add', app.views.add, name='add'),
+    path('add/', app.views.add, name='add'),
     #path('buy/', app.views.buy, name='buy'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
