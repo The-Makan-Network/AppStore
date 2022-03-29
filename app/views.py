@@ -43,13 +43,13 @@ def add(request):
         ## Check if phoneno is already in the table
         with connection.cursor() as cursor:
            
-            cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST.get('phoneno')])
+            cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST['phoneno']])
             user = cursor.fetchone()
             ## No customer with same id
             if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers VALUES (%s, %s, %s)"
-                               ,[request.POST.get('userid'), request.POST.get('phoneno'), request.POST.get('password')])
+                               ,[request.POST['userid'], request.POS['phoneno'], request.POST['password]])
                 return redirect('login')
             else:
                 status = 'Customer with phone number %s already exists' % (request.POST['phoneno'])
