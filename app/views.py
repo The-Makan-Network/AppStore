@@ -33,13 +33,14 @@ def view(request, id):
     return render(request, 'app/view_admin.html', result_dict)
 
 # Create your views here.
-def add(request, phoneno):
+def add(request):
     """Shows the main page"""
     context = {}
     status = ''
+   
 
     if request.POST:
-        ## Check if customerid is already in the table
+        ## Check if phoneno is already in the table
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [phoneno])
