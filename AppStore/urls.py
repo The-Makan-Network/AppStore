@@ -36,7 +36,7 @@ urlpatterns = [
     path('purchase/<int:productid>', app.views.purchase, name='purchase'),
 ]
 
-<!--
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.index, name='index'),
@@ -44,4 +44,4 @@ urlpatterns = [
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
 ]
--->
+"""
