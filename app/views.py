@@ -49,7 +49,7 @@ def add(request):
             if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers VALUES (%s, %s, %s)"
-                               ,[request.POST['userid'], request.POST['phoneno'], request.POST['password']])
+                               ,[request.POST.get('userid'), request.POST.get('phoneno'), request.POST.get('password')])
                 return redirect('login')
             else:
                 status = 'Customer with phone number %s already exists' % (request.POST['phoneno'])
