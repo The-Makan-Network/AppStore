@@ -33,7 +33,7 @@ def view(request, id):
     return render(request, 'app/view_admin.html', result_dict)
 
 # Create your views here.
-def add(request):
+def add(request, phoneno):
     """Shows the main page"""
     context = {}
     status = ''
