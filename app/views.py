@@ -43,7 +43,7 @@ def add(request):
         ## Check if phoneno is already in the table
         with connection.cursor() as cursor:
            
-            cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST.get(['phoneno'])])
+            cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [request.POST.get('{{phoneno}}')])
             user = cursor.fetchone()
             ## No customer with same id
             if user == None:
