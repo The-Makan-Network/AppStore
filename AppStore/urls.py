@@ -28,10 +28,20 @@ urlpatterns = [
     path("accounts/login/", auth_views.login().as_view, name='login'),
     #path('login/', LoginView.as_view(template_name='app/login.html'), name='login'),
     #path('', app.views.index, name='index'),
-    path('add/', app.views.add, name='add'),
+    path('add', app.views.add, name='add'),
     #path('buy/', app.views.buy, name='buy'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
     #path('login/', app.views.login, name='login'),
     path('purchase/<int:productid>', app.views.purchase, name='purchase'),
 ]
+
+<!--
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', app.views.index, name='index'),
+    path('add', app.views.add, name='add'),
+    path('view/<str:id>', app.views.view, name='view'),
+    path('edit/<str:id>', app.views.edit, name='edit'),
+]
+-->
