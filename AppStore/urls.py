@@ -21,8 +21,9 @@ import app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', app.views.index, name='index'),
-    path('add', app.views.add, name='add'),
-    path('view/<str:id>', app.views.view, name='view'),
-    path('edit/<str:id>', app.views.edit, name='edit'),
+    path('', app.views.home, name='home'),
+    path('register/', app.views.register, name='register'),
+    path('profile/<int:id>', app.views.profile, name='profile'),
+    path('login/', app.views.signin, name='login'),
+    path('view/<int:id>', app.views.view, name='view')
 ]
