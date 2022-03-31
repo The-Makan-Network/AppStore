@@ -102,7 +102,7 @@ def view(request, id):
 """
 # Create your views here.
 def index(request):
-    """Shows the main page"""
+
 
     ## Delete customer
     if request.POST:
