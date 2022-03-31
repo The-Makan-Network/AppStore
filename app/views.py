@@ -59,10 +59,10 @@ def signin(request):
             user = authenticate(username=username, password1=password1)
             if user is not None:
                 login(request, user)
-                messages.info(request, f'You are now logged in as {username}.')
-                return redirect('app/')
+                return redirect('home')
             else:
-                messages.error(request,'Invalid username or password.')
+                messages.success(request, ("Invalid UserID or Password. Try Again."))
+		return redirect('login')
         else:
             status = 'Invalid username or password.' 
 	
