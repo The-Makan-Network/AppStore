@@ -121,8 +121,7 @@ button:active {
                     <h2 class="name"> {{ product.2 }} </h2>
                     <h3 class="price"> {{ product.4 }} </h3>
                     <p class="minorder">Minimum Orders Needed {{ product.7 }} </p>
-                    #<a href="view/{{product.0}}"><input type="button" name="viewbutton" id="viewbutton">View More</button></a>
-                    <a href="view/{{product.0}}"><button type="button" class="btn btn-outline-primary">View</button></a>
+                    <a href="view/{{product.0}}"><button type="button" class="btn btn-outline-dark">View</button></a>
                     <form method="POST" style="display: inline;">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{product.0}}"/>
