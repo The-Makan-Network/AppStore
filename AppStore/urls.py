@@ -20,7 +20,16 @@ from django.urls import path
 
 import app.views
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', app.views.home, name='home'),
+    path('register/', app.views.register, name='register'),
+    path('profile/<int:id>', app.views.profile, name='profile'),
+    path('login/', app.views.signin, name='login'),
+    path('view/<int:id>', app.views.view, name='view')
+]
 
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app.views.index_products, name='products'),
@@ -35,6 +44,7 @@ urlpatterns = [
     path('login/', app.views.login, name='login'),
     path('purchase/<int:productid>', app.views.purchase, name='purchase'),
 ]
+"""
 
 """
 urlpatterns = [
