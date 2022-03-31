@@ -32,9 +32,13 @@
   </div>
 </form>
   <div>
-    {% for message in messages %}
-    <h3>{{message}}</h3>
-    {% endfor %}
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+                <script>M.toast({html: "{{message}}", classes: 'green rounded', displayLength:2000});</script>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
   </div>
 
 </body>
