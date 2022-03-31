@@ -54,8 +54,8 @@ def signin(request):
     if request.POST:
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
+            username = request.POST['username']
+            password = request.POST['password1']
             user = authenticate(username=username, password1=password1)
             if user is not None:
                 login(request, user)
@@ -63,12 +63,8 @@ def signin(request):
             else:
                 messages.success(request, ("Invalid UserID or Password. Try Again."))
                 return redirect('login')
-        else:
-            status = 'Invalid username or password.' 
-	
-    form = AuthenticationForm()
-    context['status'] = status
-    return render(request, 'app/login.html', context)
+
+    return render(request, 'app/login.html', {})
 		
 def profile(request, id):
     """Shows the main page"""
