@@ -1,7 +1,7 @@
 {% load static %}
 <html>
-    <style>
-        * {
+<style>
+* {
   padding: 0;
   margin: 0;
   position: relative;
@@ -47,7 +47,7 @@ h2, h3 {
   margin: 0.2em auto;
 }
 
-.item, .price {
+.name, .price {
   clear: left;
   width: 100%;
   text-align: center;
@@ -57,7 +57,7 @@ h2, h3 {
   color: Grey;
 }
 
-.description, label, button, input {
+.description, button, .minorder{
   float: left;
   clear: left;
   width: 100%;
@@ -105,87 +105,7 @@ button:active {
   background-color: #fdf;
 }
 
-.table-heading, .table-content {
-  width: 75%;
-  margin: 1% 12.25%;
-  float: left;
-  background-color: #dfd;
-}
-
-.table-heading h2 {
-  padding: 1%;
-  margin: 0;
-  text-align: center;
-}
-
-.cart-product {
-  width: 50%;
-  float: left;
-}
-
-.cart-price {
-  width: 15%;
-  float: left;
-}
-
-.cart-quantity {
-  width: 10%;
-  float: left;
-}
-
-.cart-total {
-  width: 25%;
-  float: left;
-}
-
-.cart-image-box {
-  width: 20%;
-  overflow: hidden;
-  border-radius: 2%;
-  float: left;
-  margin: 1%;
-}
-
-.cart-images {
-  height: 7em;
-  background-size: cover; 
-  background-position: center center; 
-  background-repeat: no-repeat;
-}
-
-.cart-item {
-  width: 20%;
-  float: left;
-  margin: 3.2em 1%;
-  text-align: center;
-}
-.cart-description {
-  width: 53%;
-  float: left;
-  margin: 3.2em 1%;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  font-size: 1em;
-  text-align: center;
-}
-
-.cart-price h3, .cart-total h3 {
-  margin: 3.2em 5% 3.2em 20%;
-  width: 60%;
-}
-
-.cart-quantity input {
-  margin: 3.2em 1%;
-  border: none;
-}
-
-.remove {
-  width: 10%;
-  margin: 1px;
-  float: right;
-  clear: right;
-}
-    </style>
+</style>
     <body>
         
         <h2>Product Listing</h2>
