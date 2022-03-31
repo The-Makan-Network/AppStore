@@ -37,8 +37,8 @@ def register(request):
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
                 return redirect('login')    
             else:
-		messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
-		return redirect('register')
+                messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
+                return redirect('register')
 		
     form = NewUserForm()
     return render(request, "app/register.html", {})
