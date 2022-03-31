@@ -193,8 +193,8 @@ button:active {
         <a href="login">Login</a>
         <br/><br/>
         
-        {% for product in products %}
         <div class="listing-section">
+            {% for product in products %}
             <div class="product">
                 <div class="text-box">
                     <h2 class="name"> {{ product.2 }} </h2>
@@ -208,8 +208,9 @@ button:active {
                     </form>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        
     </body>
 </html>
 
