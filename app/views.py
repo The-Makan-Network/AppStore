@@ -7,7 +7,6 @@ from .forms import NewUserForm
 
 # Create your views here.
 def home(request):
-    """Shows the product listing page"""
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
@@ -19,10 +18,8 @@ def home(request):
     return render(request, 'app/home.html', result_dict)
 
 
-
 # Create your views here.
 def register(request):
-    """Shows the main page"""
     context = {}
     status = ''
 
@@ -40,18 +37,17 @@ def register(request):
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, 'Registration successful.')
+                messages.success(request, f"Registration successful. Welcome, {username}!")
                 return redirect('/')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['username'])
-
+		
     form = NewUserForm()
     context['status'] = status
  
     return render(request, "app/register.html", context)
 
 def signin(request):
-    """Shows the login page"""
     context = {}
     status = ''
 
@@ -69,10 +65,10 @@ def signin(request):
                 messages.error(request,'Invalid username or password.')
         else:
             status = 'Invalid username or password.' 
+	
     form = AuthenticationForm()
     context['status'] = status
     return render(request, 'app/login.html', context)
-			
 		
 def profile(request, id):
     """Shows the main page"""
