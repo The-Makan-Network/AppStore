@@ -1,3 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<h2>Login</h2>
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="container">
+    <label for="username"><b>UserID</b></label>
+    <input type="text" placeholder="Enter UserID" name="username" required>
+
+    <label for="password1"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password1" required>
+       
+    <button type="submit">Login</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <span class="text"><a href="/">Back to Home</a></span>
+    <span class="text"><a href={% url 'register' %}>Register with us</a></span>
+  </div>
+</form>
+
+  
+  <div>
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+  </div>
+    
+</body>
+</html>
+
+
+
+
+
 {% load static %}
 <!DOCTYPE html>
 <html>
