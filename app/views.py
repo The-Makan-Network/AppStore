@@ -20,14 +20,11 @@ def home(request):
 
 # Create your views here.
 def register(request):
-    context = {}
-    status = ''
 
     if request.POST:
         form = NewUserForm(request.POST)
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
-
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['username']])
             user = cursor.fetchone()
             ## No customer with same id
@@ -37,15 +34,14 @@ def register(request):
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, f"Registration successful. Welcome, {username}!")
-                return redirect('/')    
+                messages.success(request, ("Registration successful. Welcome, {username}!"))
+                return redirect('login')    
             else:
-                status = 'User with ID %s already exists' % (request.POST['username'])
+		messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
+		return redirect('register')
 		
     form = NewUserForm()
-    context['status'] = status
- 
-    return render(request, "app/register.html", context)
+    return render(request, "app/register.html", {})
 
 def signin(request):
 
