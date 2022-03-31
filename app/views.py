@@ -215,7 +215,7 @@ def login(request):
 
 # Create your views here.
 #def index_products(request):
-    """Shows the product listing page"""
+
 
     ## Use raw query to get all objects
 #    with connection.cursor() as cursor:
@@ -227,7 +227,7 @@ def login(request):
 #    return render(request, 'app/index_products.html', result_dict)
 
 #def purchase(request, productid):
-#    """Shows the main page"""
+
 
     ## Use raw query to get all objects
 #    with connection.cursor() as cursor:
