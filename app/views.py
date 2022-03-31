@@ -48,21 +48,18 @@ def register(request):
     return render(request, "app/register.html", context)
 
 def signin(request):
-    context = {}
-    status = ''
 
     if request.POST:
-        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password1']
-            user = authenticate(username=username, password1=password1)
-            if user is not None:
-                login(request, user)
-                return redirect('register')
-            else:
-                messages.success(request, ("Invalid UserID or Password. Try Again."))
-                return redirect('login')
+        username = request.POST['username']
+        password = request.POST['password1']
+        user = authenticate(username=username, password1=password1)
+        if user is not None:
+            login(request, user)
+            return redirect('register')
+        else:
+             messages.success(request, ("Invalid UserID or Password. Try Again."))
+             return redirect('login')
 
     return render(request, 'app/login.html', {})
 		
