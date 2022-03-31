@@ -121,7 +121,7 @@ def index(request):
 
 # Create your views here.
 def view(request, id):
-    """Shows the main page"""
+    
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
@@ -133,7 +133,7 @@ def view(request, id):
 
 # Create your views here.
 def add(request):
-    """Shows the main page"""
+    
     context = {}
     status = ''
    
@@ -160,7 +160,7 @@ def add(request):
 
 # Create your views here.
 def edit(request, id):
-    """Shows the main page"""
+    
 
     # dictionary for initial data with
     # field names as keys
@@ -192,7 +192,7 @@ def edit(request, id):
 
 # Create your views here.
 def login(request):
-    """Shows the login page"""
+    
     context = {}
     status = ''
 
