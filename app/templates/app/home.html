@@ -57,7 +57,7 @@ h2, h3 {
   color: Grey;
 }
 
-.button, .minorder{
+button, .minorder{
   float: left;
   clear: left;
   width: 100%;
@@ -119,7 +119,7 @@ button:active {
                 <div class="text-box">
                     <h2 class="name"> {{ product.2 }} </h2>
                     <h3 class="price"> {{ product.4 }} </h3>
-                    <p class="minorder"> {{ product.7 }} </p>
+                    <p class="minorder">Minimum Orders Needed {{ product.7 }} </p>
                     <a href="view/{{product.0}}"><button>View More</button></a>
                     <form method="POST" style="display: inline;">
                     {% csrf_token %}
