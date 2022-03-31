@@ -50,7 +50,6 @@ def register(request):
 def signin(request):
 
     if request.POST:
-        if form.is_valid():
         username = request.POST['username']
         password = request.POST['password1']
         user = authenticate(username=username, password1=password1)
