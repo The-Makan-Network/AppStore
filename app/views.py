@@ -60,6 +60,37 @@ def signin(request):
     else:
         return render(request, 'app/login.html', {})
 
+def signout(request):
+	logout(request)
+	messages.success(request, ("You Were Logged Out!"))
+	return redirect('home')
+
+		
+def profile(request, id):
+    """Shows the main page"""
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
+        user = cursor.fetchone()
+
+    result_dict = {'users': users}
+
+    return render(request, 'app/profile.html', result_dict)
+
+
+def view(request, id):
+    """Shows the main page"""
+    
+    ## Use raw query to get a customer
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+        customer = cursor.fetchone()
+    result_dict = {'cust': customer}
+
+    return render(request,'app/view.html',result_dict)
+
+
 
 """
 def signin(request):
@@ -100,27 +131,3 @@ def signin(request):
     return render(request, 'app/login.html', {})
     
 """
-		
-def profile(request, id):
-    """Shows the main page"""
-
-    ## Use raw query to get all objects
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
-        user = cursor.fetchone()
-
-    result_dict = {'users': users}
-
-    return render(request, 'app/profile.html', result_dict)
-
-
-def view(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
-        customer = cursor.fetchone()
-    result_dict = {'cust': customer}
-
-    return render(request,'app/view.html',result_dict)
