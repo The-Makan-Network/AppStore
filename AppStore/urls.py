@@ -24,6 +24,6 @@ urlpatterns = [
     path('', app.views.home, name='home'),
     path('register/', app.views.register, name='register'),
     path('profile/<int:id>', app.views.profile, name='profile'),
-    path('login/', app.views.signin, include('djang.contrib.auth.urls'), name='login'),
+    path('login/', app.views.signin, name='login'),
     path('view/<int:id>', app.views.view, name='view')
 ]
