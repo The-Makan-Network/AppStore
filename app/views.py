@@ -35,7 +35,10 @@ def register(request):
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
-                return redirect('login')    
+                return redirect('login')
+	    elif !form.is_valid():
+                messages.success(request, ("Password does not pass requirements. Please try again."))
+		return redirect('register')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
                 return redirect('register')
