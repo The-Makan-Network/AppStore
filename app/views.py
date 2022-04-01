@@ -45,6 +45,24 @@ def register(request):
 
 
 def signin(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.success(request, ("There Was An Error Logging In, Try Again..."))	
+            return redirect('login')	
+
+
+    else:
+        return render(request, 'authenticate/login.html', {})
+
+
+"""
+def signin(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
         if form.is_valid():
@@ -64,7 +82,7 @@ def signin(request):
                     "app/login.html",
                     context={"form":form})
 
-
+"""
 """
 def signin(request):
 
