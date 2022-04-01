@@ -28,7 +28,10 @@ def register(request):
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['username']])
             user = cursor.fetchone()
             ## No customer with same id
-            if user == None:
+            if not form.is_valid():
+                messages.success(request, ("Password does not pass requirements. Please try again."))
+		return redirect('register;)
+            elif user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
@@ -36,9 +39,6 @@ def register(request):
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
                 return redirect('login')
-            elif not form.is_valid():
-                messages.success(request, ("Password does not pass requirements. Please try again."))
-                return redirect('register')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
                 return redirect('register')
