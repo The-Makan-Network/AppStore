@@ -47,7 +47,7 @@ def register(request):
 def signin(request):
     if request.method == "POST":
         username = request.POST['username']
-        password = request.POST['password']
+        password = request.POST['password1']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -58,7 +58,7 @@ def signin(request):
 
 
     else:
-        return render(request, 'authenticate/login.html', {})
+        return render(request, 'app/login.html', {})
 
 
 """
