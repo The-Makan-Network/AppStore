@@ -9,55 +9,8 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link" href="login/">Calendar</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Events
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="register/">All Events</a></li>
-            {% if user.is_authenticated %}
-            <li><a class="dropdown-item" href="login/">Add Event</a></li>
-            <li><a class="dropdown-item" href="register/">My Events</a></li>
-            {% endif %}
-            <li><a class="dropdown-item" href="login/">Search Events</a></li>
-
-            
-          </ul>
-        </li>
-
-
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Venues
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="login/">Test 2</a></li>
-            {% if user.is_authenticated %}
-            <li><a class="dropdown-item" href="register/">Test 2 drop</a></li>
-            {% endif %}
-            
-          </ul>
-        </li>   
-      
-      
-
-        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Downloads
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="login/">Test 3</a></li>
-            <li><a class="dropdown-item" href="register/">Test 3 drop</a></li>
-            <li><a class="dropdown-item" href="login/">Test 3 drop again</a></li>
-          </ul>
-        </li>
-
-      
     
 
       {% if user.is_authenticated %}
