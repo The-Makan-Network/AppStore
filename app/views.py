@@ -54,7 +54,7 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, ("Welcome, " {{user.username}} ))
+            messages.success(request, ("Welcome, {{user.username}}"))
             return redirect('home')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
