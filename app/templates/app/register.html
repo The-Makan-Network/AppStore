@@ -10,58 +10,47 @@
 
 <form method="post">
   {% csrf_token %}
-  <div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="username" class="username">UserID</label>
-  </div>
-  <div class="col-auto">
-    <input type="text" id="username" class="form-control" aria-describedby="usernameHelpInline" maxlength="16">
-  </div>
-  <div class="col-auto">
+  <div class="container">
+    <label for="username"><b>UserID</b></label>
+    <input type="text" placeholder="Enter UserID" name="username" aria-describedby="usernameHelpInline" maxlength="16" required>
     <span id="usernameHelpInline" class="form-text">
       Maximum 16 characters long.
     </span>
   </div>
-  <div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="phoneno" class="col-form-label">Phone Number</label>
-  </div>
-  <div class="col-auto">
-    <input type="tel" id="phoneno" class="form-control" aria-describedby="phonenoHelpInline">
-  </div>
-  <div class="col-auto">
+  
+  <br></br>
+
+  <div class="container">
+    <label for="phoneno"><b>Phone Number</b></label>
+    <input type="tel" placeholder="Enter Phone Number" name="phoneno" aria-describedby="phonenoHelpInline" maxlength="8" required>
     <span id="phonenoHelpInline" class="form-text">
       Must be 8 numbers long.
     </span>
   </div>
-  <div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="password1" class="col-form-label">Password</label>
-  </div>
-  <div class="col-auto">
-    <input type="password" id="password1" class="form-control" aria-describedby="passwordHelpInline">
-  </div>
-  <div class="col-auto">
+  
+  <br></br>
+
+  <div class="container">
+    <label for="password1"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password1" aria-describedby="passwordHelpInline" maxlength="12" required>
     <span id="passwordHelpInline" class="form-text">
       Must be 8-12 characters long. Cannot be similar to UserID and cannot be entirely numeric.
     </span>
   </div>
+  
+  <br></br>
+  
+  <div class="container">    
+    <label for="password2"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password2" maxlength="12" required>
   </div>
-  <div class="row g-3 align-items-center">
-  <div class="col-auto">
-    <label for="password2" class="col-form-label">Repeat Password</label>
-  </div>
-  <div class="col-auto">
-    <input type="password" id="password2" class="form-control" aria-describedby="passwordHelpInline">
-  </div>
-  <div class="col-auto">
-    <span id="passwordHelpInline" class="form-text">
-      Must be 8-12 characters long. Cannot be similar to UserID and cannot be entirely numeric.
-    </span>
-  </div>
-      <div class="container">
+  
+  <br></br>
+
+  <div class="container">
     <button type="submit">Register</button>
   </div>
+  
 
   <div class="container" style="background-color:#f1f1f1">
     <span class="text"><a href="/">Back to Home</a></span>
