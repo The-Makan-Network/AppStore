@@ -36,7 +36,7 @@ def register(request):
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
                 return redirect('login')
-            elif !form.is_valid():
+            elif not form.is_valid():
                 messages.success(request, ("Password does not pass requirements. Please try again."))
                 return redirect('register')
             else:
