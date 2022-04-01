@@ -45,7 +45,6 @@ class MyUser(AbstractBaseUser):
     )
     phoneno = models.IntegerField(
         verbose_name='phone number',
-        max_length=12,
         unique=True,
     )
     is_active = models.BooleanField(default=True)
