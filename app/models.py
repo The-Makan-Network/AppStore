@@ -10,12 +10,12 @@ class MyUserManager(BaseUserManager):
         Creates and saves a User with the given email, date of
         birth and password.
         """
-        if not phoneno or username:
-            raise ValueError('Users must have a Phone Number and Username')
+        if not username or not phoneno:
+            raise ValueError('Users must have a userid and phone number')
 
         user = self.model(
             username=username,
-            phoneno=phoneno
+            phoneno=phoneno,
         )
 
         user.set_password(password)
@@ -39,7 +39,7 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     username = models.CharField(
-        verbose_name='user id',
+        verbose_name='userid',
         max_length=16,
         unique=True,
     )
@@ -54,7 +54,7 @@ class MyUser(AbstractBaseUser):
     objects = MyUserManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['date_of_birth', 'password']
+    REQUIRED_FIELDS = ['phoneno']
 
     def __str__(self):
         return self.username
