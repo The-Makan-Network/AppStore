@@ -30,7 +30,7 @@ def register(request):
             ## No customer with same id
             if not form.is_valid():
                 messages.success(request, ("Password does not pass requirements. Please try again."))
-		return redirect('register')
+                return redirect('register')
             elif user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
@@ -56,7 +56,7 @@ def signin(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.success(request, ("There Was An Error Logging In, Try Again..."))	
+            messages.success(request, ("There Was An Error Logging In, Try Again."))	
             return redirect('login')	
 
 
