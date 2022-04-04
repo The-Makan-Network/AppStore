@@ -31,3 +31,5 @@ class MyAuthBackend:
             return User.objects.get(pk=pk)
         except User.DoesNotExist:
             pass
+
+        return None
