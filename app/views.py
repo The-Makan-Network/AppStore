@@ -50,15 +50,15 @@ def signin(request):
         userid = request.POST['username']
         password = request.POST['password1']
         with connection.cursor as cursor:
-		cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
-		account = cursor.fetchone()
+            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
+            account = cursor.fetchone()
         if account is not None:
-		login(request, account)
-		username = account.userid
-		return render(request, 'app/profile.html', {'users':username)
+            login(request, account)
+            username = account.userid
+            return render(request, 'app/profile.html', {'users':username)
         else:
-		messages.success(request, ("there was an error logging in, please try again."))
-		return redirect('login')
+            messages.success(request, ("there was an error logging in, please try again."))
+            return redirect('login')
         return render(request, 'app/login.html', {})
 
 
