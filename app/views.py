@@ -46,6 +46,24 @@ def register(request):
     return render(request, "app/register.html", {})
 
 def signin(request):
+    if request.POST:
+	userid = request.POST['username']
+	password = request.POST['password1']
+	with connection.cursor as cursor:
+		cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
+		account = cursor.fetchone()
+	if account is not None:
+		login(request, account)
+		username = account.userid
+		return render(request, 'app/profile.html', {'users':username)
+	else:
+		messages.success(request, ("there was an error logging in, please try again."))
+		return redirect('login')
+	return render(request, 'app/login.html', {})
+
+
+"""
+def signin(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password1']
@@ -72,7 +90,7 @@ def signout(request):
 	logout(request)
 	messages.success(request, ("You Were Logged Out!"))
 	return redirect('home')
-
+"""
 		
 def profile(request, id):
     """Shows the main page"""
