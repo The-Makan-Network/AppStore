@@ -10,7 +10,7 @@ from .models import Loginteste
 class Person(forms.ModelForm):
     class Meta:
         model = Loginteste
-        fields = ['username', 'password', 'phoneno']
+        fields = ['userid', 'password', 'phoneno']
 
 
 # Create your forms here.
