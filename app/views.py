@@ -55,7 +55,7 @@ def signin(request):
         if account is not None:
             login(request, account)
             username = account.userid
-            return render(request, 'app/profile.html', {'users':username)
+            return render(request, 'app/profile.html', {'users':username})
         else:
             messages.success(request, ("there was an error logging in, please try again."))
             return redirect('login')
