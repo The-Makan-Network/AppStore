@@ -52,40 +52,19 @@ def signin(request):
         with connection.cursor as cursor:
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
-        if account is not None:
-            login(request, account)
-            username = account.userid
-            return render(request, 'app/profile.html', {'users':username})
-        else:
-            messages.success(request, ("there was an error logging in, please try again."))
-            return redirect('login')
-    return render(request, 'app/login.html', {})
-
-
-"""
-def signin(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password1']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, f'Welcome, You logged in to {user.username}')
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [user.username])
-                users = cursor.fetchone()
-            result_dict = {'users': users}
-            return profile(users.0)
-            #return render(request, 'app/profile.html', result_dict)
-            #return redirect('home/')
-        else:
-            messages.success(request, ("There Was An Error Logging In, Try Again."))	
-            return redirect('login')	
+            if account is not None:
+                login(request, account)
+                username = account.userid
+                return render(request, 'app/profile.html', {'users':username})
+            else:
+                messages.success(request, ("there was an error logging in, please try again."))
+                return redirect('login')
+    return render(request, 'app/login.html', {})	
 
 
     else:
         return render(request, 'app/login.html', {})
-"""
+
 def signout(request):
 	logout(request)
 	messages.success(request, ("You Were Logged Out!"))
