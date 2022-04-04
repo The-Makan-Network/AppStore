@@ -122,6 +122,13 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
+def search(request, qns):
+    with connection.cursor() as cursor:
+	cursor.execute("SELECT * from allusers u, products p WHERE u.userid LIKE '%s%' OR p.name LIKE '%s%'", [qns])
+	searched = cursor.fetchall()
+    result_dict = {'qns': searched}
+
+    return render(request, 'app/search.html', result_dict)
 
 
 """
