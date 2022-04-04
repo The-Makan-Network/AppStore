@@ -30,14 +30,14 @@ def register(request):
             if not form.is_valid():
                 messages.success(request, ("Password does not pass requirements. Please try again."))
                 return redirect('register')
-            elif user == None:
+            elif form.is_valid() and user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
-                return redirect('login')
+                return redirect('home')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
                 return redirect('register')
