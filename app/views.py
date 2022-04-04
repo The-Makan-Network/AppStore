@@ -83,7 +83,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Welcome, You logged in to {user.username}')
-            return redirect('home')
+            return redirect('profile/{user.username}')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
             return redirect('login')	
