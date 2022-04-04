@@ -55,7 +55,7 @@ def signin(request):
             messages.success(request, f'Welcome, You logged in to {user.username}')
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [user.username])
-                customer = cursor.fetchone()
+                users = cursor.fetchone()
             result_dict = {'users': users}
             return render(request, 'app/profile.html', result_dict)
             #return redirect('home/')
