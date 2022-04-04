@@ -16,9 +16,12 @@
       {% if user.is_authenticated %}
       {% if user.is_superuser %}
           <li class="nav-item">
-          <a class="nav-link" href="profile/{{user.username}}">{{user.username}}</a>
+          <a class="nav-link" href="admin"> Administrator Page </a>
         </li>
       {%endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="profile/{{user.username}}"> {{ user.username }} </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="logout"> Logout </a>
         </li>
