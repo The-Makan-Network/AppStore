@@ -59,7 +59,7 @@ def signin(request):
         else:
             messages.success(request, ("there was an error logging in, please try again."))
             return redirect('login')
-        return render(request, 'app/login.html', {})
+    return render(request, 'app/login.html', {})
 
 
 """
