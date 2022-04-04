@@ -53,7 +53,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Welcome, You logged in to {user.username}')
-            return render(request, 'app/profile.html', {"user":user.username})
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [user.username])
+                customer = cursor.fetchone()
+            result_dict = {'users': users}
+            return render(request, 'app/profile.html', result_dict)
             #return redirect('home/')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
