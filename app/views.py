@@ -57,7 +57,8 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [user.username])
                 users = cursor.fetchone()
             result_dict = {'users': users}
-            return render(request, 'app/profile.html', result_dict)
+            return profile(users.username)
+            #return render(request, 'app/profile.html', result_dict)
             #return redirect('home/')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
