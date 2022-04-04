@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from .models import Loginteste
 
 class MyAuthBackend:
-    def authenticate(self, request, username=None, password=None):
-        if username is None or password is None:
+    def authenticate(self, request, username=None, phoneno=None, password=None):
+        if username is None or password is None or phoneno is None:
             # nothing to do
             return None
 
