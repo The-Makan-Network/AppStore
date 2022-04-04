@@ -18,34 +18,6 @@ def home(request):
 
     return render(request, 'app/home.html', result_dict)
 
-def register(request):
-
-    if request.POST:
-        form = Person(request.POST)
-        ## Check if userid is already in the table
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['username']])
-            user = cursor.fetchone()
-            ## No customer with same id
-            if not form.is_valid():
-                messages.success(request, ("Password does not pass requirements. Please try again."))
-                return redirect('register')
-            elif user == None:
-                ##TODO: date validation
-                cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
-                        , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
-                newuser = form.save()
-                login(request, newuser)
-                messages.success(request, ("Registration successful. Welcome, {username}!"))
-                return redirect('login')
-            else:
-                messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
-                return redirect('register')
-		
-    form = Person()
-    return render(request, "app/register.html", {})
-
-"""
 # Create your views here.
 def register(request):
 
@@ -73,7 +45,6 @@ def register(request):
 		
     form = NewUserForm()
     return render(request, "app/register.html", {})
-"""
 
 def signin(request):
     if request.method == "POST":
