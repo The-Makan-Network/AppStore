@@ -57,7 +57,7 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [user.username])
                 users = cursor.fetchone()
             result_dict = {'users': users}
-            return profile(users.username)
+            return profile(users.0)
             #return render(request, 'app/profile.html', result_dict)
             #return redirect('home/')
         else:
