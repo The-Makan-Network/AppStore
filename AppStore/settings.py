@@ -111,7 +111,7 @@ else:
 
     
 AUTHENTICATION_BACKENDS = [
-    'project_config.auth_backend.MyAuthBackend',
+    'app.auth_backends.MyAuthBackend',
     # 'django.contrib.auth.backends.ModelBackend',
 ]    
 
