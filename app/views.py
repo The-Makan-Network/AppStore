@@ -81,7 +81,7 @@ def profile(request, id):
         cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
         user = cursor.fetchone()
 
-    result_dict = {'users': users}
+    result_dict = {'user': user}
 
     return render(request, 'app/profile.html', result_dict)
 
