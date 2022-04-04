@@ -85,12 +85,12 @@ def signin(request):
 
     else:
         return render(request, 'app/login.html', {})
-
+"""
 def signout(request):
 	logout(request)
 	messages.success(request, ("You Were Logged Out!"))
 	return redirect('home')
-"""
+
 		
 def profile(request, id):
     """Shows the main page"""
