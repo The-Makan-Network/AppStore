@@ -7,4 +7,4 @@ class Loginteste(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'loginteste'
+        db_table = 'allusers'
