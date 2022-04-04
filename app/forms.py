@@ -4,16 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 """
 
-from django.db import models
+from django import forms
+from .models import Loginteste
 
-class Loginteste(models.Model):
-    username = models.CharField(max_length=50, blank=True, null=True)
-    password = models.CharField(max_length=50, blank=True, null=True)
-    phoneno = models.IntegerField(max_length=50, blank=True, null=True)
-
+class Person(forms.ModelForm):
     class Meta:
-        managed = True
-        db_table = 'loginteste'
+        model = Loginteste
+        fields = ['username', 'password', 'phoneno']
 
 
 # Create your forms here.
