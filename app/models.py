@@ -1,9 +1,7 @@
-from django.db import models
+from django import forms
+from .models import Loginteste
 
-class signingin(models.Model):
-    username = models.CharField(max_length=50, blank=True, null=True)
-    password = models.CharField(max_length=50, blank=True, null=True)
-
+class Person(forms.ModelForm):
     class Meta:
-        managed = True
-        db_table = 'alluser'
+        model = Loginteste
+        fields = ['username', 'password']
