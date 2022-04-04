@@ -1,10 +1,20 @@
+"""
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+"""
+
+from django import forms
+from .models import signingin
+
+class Person(forms.ModelForm):
+    class Meta:
+        model = Loginteste
+        fields = ['username', 'password']
 
 
 # Create your forms here.
-
+"""
 class NewUserForm(UserCreationForm):
 	phoneno = forms.IntegerField(required=True)
 
@@ -18,3 +28,4 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+"""
