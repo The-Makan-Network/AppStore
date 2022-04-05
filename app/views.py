@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db import connection
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import NewUserForm
 #from models import useraccounts
 
@@ -113,7 +113,8 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
                 if account[2] == password:
-                    user = NewUserForm(account)
+                    created = UserCreationForm(account)
+                    user = NewUserForm(created)
                     login_user = user.save()
                     login(request, login_user)
                     username = user.userid
