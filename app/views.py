@@ -45,16 +45,8 @@ def register(request):
 		
     form = NewUserForm()
     return render(request, "app/register.html", {})
-"""
-def signin(request):
-    if request.POST:
-	userid = request.POST['username']
-        with connection.cursor as cursor:
-            login_check = cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
-            if login_check:
-                if login_check.password == request.POST['password']
 
-"""
+
 def signin(request):
     if request.POST:
         userid = request.POST['username']
@@ -63,7 +55,7 @@ def signin(request):
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
             if account is not None:
-                user = NewUserForm(account)
+                user = NewUserForm(request.POST)
                 login_user = user.save()
                 login(request, login_user)
                 username = user.userid
