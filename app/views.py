@@ -154,10 +154,10 @@ def view(request, id):
     return render(request,'app/view.html',result_dict)
 
 def search(request):
-    qns = request.GET['searched']
-    qns = '%' + qns + '%'
+    qns = request.POST['searched']
+    qns = "%" + qns + "%"
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid LIKE qns")
+        cursor.execute("SELECT * FROM products WHERE name LIKE %s", [qns])
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
