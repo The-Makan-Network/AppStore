@@ -113,7 +113,8 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
                 if account[2] == password:
-                    created = UserCreationForm(account)
+                    created = User.objects.create_user(username, account[1], password, password)
+                    #created = UserCreationForm(account)
                     user = NewUserForm(created)
                     login_user = user.save()
                     login(request, login_user)
