@@ -156,7 +156,7 @@ def view(request, id):
 def search(request):
     qns = request.GET['searched']
     param = '{}%'.format(qns)
-    sql = "SELECT * FROM products WHERE name LIKE %s%"
+    sql = "SELECT * FROM products WHERE name LIKE %s"
     with connection.cursor() as cursor:
         cursor.execute(sql, (param,))
         searched = cursor.fetchall()
