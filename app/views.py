@@ -80,12 +80,6 @@ def signin(request):
                 return redirect('register')
             else:
                 messages.error(request, ("Invalid username or password."))
-        elif account is not None:
-            user = NewUserForm(account[0], account[1], account[2], account[2])
-            login_user = user.save()
-            login(request, login_user)
-            username = user.userid
-            return render(request, 'app/profile.html', {'users':username})
         else:
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
