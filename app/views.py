@@ -3,8 +3,8 @@ from django.db import connection
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-#from .forms import NewUserForm
-from models import useraccounts
+from .forms import NewUserForm
+#from models import useraccounts
 
 # Create your views here.
 def home(request):
@@ -45,7 +45,7 @@ def register(request):
 		
     form = NewUserForm()
     return render(request, "app/register.html", {})
-
+"""
 def signin(request):
     if request.POST:
 	userid = request.POST['username']
@@ -74,7 +74,7 @@ def signin(request):
 
     else:
         return render(request, 'app/login.html', {})
-"""
+
 def signout(request):
 	logout(request)
 	messages.success(request, ("You Were Logged Out!"))
