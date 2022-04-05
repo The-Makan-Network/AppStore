@@ -63,8 +63,8 @@ def signin(request):
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
             if account is not None:
-		user = NewUserForm(account)
-		login_user = user.save()
+                user = NewUserForm(account)
+                login_user = user.save()
                 login(request, login_user)
                 username = user.userid
                 return render(request, 'app/profile.html', {'users':username})
