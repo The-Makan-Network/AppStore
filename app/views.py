@@ -71,10 +71,6 @@ def signin(request):
                 return redirect('login')
     return render(request, 'app/login.html', {})	
 
-
-    else:
-        return render(request, 'app/login.html', {})
-
 def signout(request):
 	logout(request)
 	messages.success(request, ("You Were Logged Out!"))
