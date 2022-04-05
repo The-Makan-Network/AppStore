@@ -59,7 +59,7 @@ def signin(request):
     if request.POST:
         userid = request.POST['username']
         password = request.POST['password1']
-        with connection.cursor as cursor:
+        with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
             if account is not None:
