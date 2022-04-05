@@ -163,7 +163,7 @@ def search(request):
     qns = request.POST['searched']
     qns = "%" + qns + "%"
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE name LIKE %s OR upper(name) LIKE %s OR lower(name) LIKE %s OR initcap(name) LIKE %s", [qns])
+        cursor.execute("SELECT * FROM products WHERE lower(name) LIKE lower(%s)", [qns])
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
