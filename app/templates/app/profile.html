@@ -7,11 +7,11 @@
 <body>
   {% include 'app/header.html' %}
     <h3> Profile </h3>
-  {{% if user %}}
-  {{% for user in user %}}
+  {% if user %}
+  {% for user in user %}
     <h3> Profile </h3>
-  {{users.0}}
-  {{users.1}}
+  {{user.0}}
+  {{user.1}}
   {{% endfor %}}
   {{% endif %}}
   <h2> nothing </h2>
