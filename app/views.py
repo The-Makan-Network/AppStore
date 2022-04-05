@@ -74,7 +74,7 @@ def signin(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, ("You are now logged in as {username}"))
+                messages.success(request, f'Welcome, You logged in to {user.username}')
                 return redirect('register')
             else:
                 messages.error(request, ("Invalid username or password. 1"))
@@ -91,7 +91,7 @@ def signin(request):
                     username = user.userid
                     return render(request, 'app/profile.html', {'users':username})
                 else:
-                    messages.success(request, "invalid 2")
+                    messages.success(request, f'Invalid, You logged in to password {account[2]}')
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
@@ -132,7 +132,7 @@ def view(request, id):
 def search(request):
     qns = request.GET['searched']
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * from products WHERE name LIKE %%s%%", [qns])
+        cursor.execute("SELECT * from products WHERE name LIKE '%%s%%'", [qns])
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
