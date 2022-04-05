@@ -46,7 +46,7 @@ def register(request):
     form = NewUserForm()
     return render(request, "app/register.html", {})
 
-
+"""
 def signin(request):
     if request.POST:
         userid = request.POST['username']
@@ -64,7 +64,7 @@ def signin(request):
                 messages.success(request, ("there was an error logging in, please try again."))
                 return redirect('login')
     return render(request, 'app/login.html', {})	
-
+"""
 def signin(request):
     if request.POST:
         form = AuthenticationForm(request=request, data=request.POST)
@@ -84,7 +84,7 @@ def signin(request):
             else:
                 messages.error(request, ("Invalid username or password."))
         elif account is not None:
-            user = NewUserForm(account)
+            user = NewUserForm(account.username, account.phoneno, account.password1, account.password1)
             login_user = user.save()
             login(request, login_user)
             username = user.userid
