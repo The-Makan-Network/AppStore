@@ -36,7 +36,7 @@
       {% endif %}
 
       </ul>
-      <form class="d-flex" method=POST action="{% url 'login' %}">
+      <form class="d-flex" method=POST action="{% url 'searched' %}">
         {% csrf_token %}
 
         <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
