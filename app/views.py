@@ -146,6 +146,8 @@ def view(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
+	word = 'cookies'
+	word = '%' + word + '%'
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
         customer = cursor.fetchone()
@@ -155,10 +157,9 @@ def view(request, id):
 
 def search(request):
     qns = request.GET['searched']
-    param = '{}%'.format(qns)
-    sql = "SELECT * FROM products WHERE name LIKE %s"
+    qns = '%' + qns + '%'
     with connection.cursor() as cursor:
-        cursor.execute(sql, (param,))
+        cursor.execute("SELECT * FROM products WHERE productid LIKE %s", [qns])
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
