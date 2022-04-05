@@ -100,27 +100,32 @@ def signin(request):
                     context={"form":form})
 """
 def signin(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password1)
-            if user is not None:
-                login(request, user)
-                messages.success(request, ("You are now logged in as {username}"))
-                return redirect('register')
-            else:
-                messages.error(request, ("Invalid username or password. 1"))
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password1']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, f'Welcome, You logged in to {user.username}')
+            return redirect('home')
         else:
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            messages.success(request, f'{username} {password}')
-    form = AuthenticationForm()
-    return render(request,
-                    "app/login.html",
-                    context={"form":form})
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
+                account = cursor.fetchone()
+                if account[2] == password:
+                    user = NewUserForm(account[0], account[1], account[2], account[2])
+                    login_user = user.save()
+                    login(request, login_user)
+                    username = user.userid
+                    return render(request, 'app/profile.html', {'users':username})
+                else:
+                    messages.success(request, f'Invalid, You logged in to password {account[2]}')
+            messages.success(request, f'{username} {password}')	
+            return redirect('login')	
+
+
+    else:
+        return render(request, 'app/login.html', {})
 
 
 def signout(request):
