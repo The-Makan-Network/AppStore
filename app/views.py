@@ -105,7 +105,7 @@ def signin(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password1)
             if user is not None:
                 login(request, user)
                 messages.success(request, ("You are now logged in as {username}"))
