@@ -63,8 +63,10 @@ def signin(request):
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
             if account is not None:
-                login(request, account)
-                username = account.userid
+		user = NewUserForm(account)
+		login_user = user.save()
+                login(request, login_user)
+                username = user.userid
                 return render(request, 'app/profile.html', {'users':username})
             else:
                 messages.success(request, ("there was an error logging in, please try again."))
