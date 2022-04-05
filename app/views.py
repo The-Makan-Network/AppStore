@@ -157,7 +157,7 @@ def search(request):
     qns = request.GET['searched']
     qns = '%' + qns + '%'
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid LIKE %s", [qns])
+        cursor.execute("SELECT * FROM products WHERE productid LIKE qns")
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
