@@ -6,5 +6,5 @@ class Allusers(models.Model):
   password = models.CharField(max_length=12)
   
   class Meta:
-    managed = False
+    managed = True
     db_table = 'allusers'
