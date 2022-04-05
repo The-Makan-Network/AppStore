@@ -68,8 +68,6 @@ def signin(request):
 def signin(request):
     if request.POST:
         form = AuthenticationForm(request=request, data=request.POST)
-        userid = request.POST['username']
-        password = request.POST['password1']
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -93,8 +91,7 @@ def signin(request):
                     username = user.userid
                     return render(request, 'app/profile.html', {'users':username})
                 else:
-                    print(account[2], password)
-                    messages.success(request, (("You are now logged in as {{password}}")))
+                    messages.success(request, "invalid 2")
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
