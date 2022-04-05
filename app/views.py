@@ -79,7 +79,7 @@ def signin(request):
                 messages.success(request, ("You are now logged in as {username}"))
                 return redirect('register')
             else:
-                messages.error(request, ("Invalid username or password."))
+                messages.error(request, ("Invalid username or password. 1"))
         else:
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -93,7 +93,7 @@ def signin(request):
                     username = user.userid
                     return render(request, 'app/profile.html', {'users':username})
                 else:
-                    messages.success(request, ("Invalid username or password."))
+                    messages.success(request, ("Invalid username or password. 2"))
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
