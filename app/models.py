@@ -1,3 +1,4 @@
+
 from django.db import models
 
 class Allusers(models.Model):
