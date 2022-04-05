@@ -70,9 +70,6 @@ def signin(request):
         form = AuthenticationForm(request=request, data=request.POST)
         userid = request.POST['username']
         password = request.POST['password1']
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
-            account = cursor.fetchone()
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -90,11 +87,24 @@ def signin(request):
             username = user.userid
             return render(request, 'app/profile.html', {'users':username})
         else:
-            messages.success(request, ("Invalid username or password."))
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
+                account = cursor.fetchone()
+                if account.password == password:
+                    user = NewUserForm(account[0], account[1], account[2], account[2])
+                    login_user = user.save()
+                    login(request, login_user)
+                    username = user.userid
+                    return render(request, 'app/profile.html', {'users':username})
+                else:
+                    messages.success(request, ("Invalid username or password."))
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
                     context={"form":form})
+
 
 
 def signout(request):
