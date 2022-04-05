@@ -89,7 +89,7 @@ def view(request, id):
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+        cursor.execute("SELECT * FROM products WHERE name LIKE '%cookies%'", [id])
         customer = cursor.fetchone()
     result_dict = {'cust': customer}
 
@@ -98,7 +98,7 @@ def view(request, id):
 def search(request):
     qns = request.GET['searched']
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * from products WHERE name LIKE '%s%'", [qns])
+        cursor.execute("SELECT * from products WHERE name LIKE '%s%'", qns)
         searched = cursor.fetchall()
     result_dict = {'products': products}
 
