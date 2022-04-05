@@ -101,7 +101,7 @@ def signin(request):
 """
 def signin(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request=request, data=request.POST)
+        form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -116,7 +116,7 @@ def signin(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
-            messages.success(request, f'{password}')
+            messages.success(request, f'{username} {password}')
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
