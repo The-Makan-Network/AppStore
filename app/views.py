@@ -98,7 +98,7 @@ def view(request, id):
 def search(request):
     qns = request.GET['searched']
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * from products WHERE name LIKE '%s%'", qns)
+        cursor.execute("SELECT * from products WHERE name LIKE '%%s%%'", qns)
         searched = cursor.fetchall()
     result_dict = {'products': products}
 
