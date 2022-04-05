@@ -111,9 +111,12 @@ def signin(request):
                 messages.success(request, ("You are now logged in as {username}"))
                 return redirect('register')
             else:
-                messages.error(request, ("Invalid username or password."))
+                messages.error(request, ("Invalid username or password. 1"))
         else:
-            messages.success(request, ("Invalid username or password."))
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            messages.success(request, f'{password}')
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
