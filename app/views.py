@@ -55,7 +55,7 @@ def signin(request):
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
             account = cursor.fetchone()
             if account is not None:
-                user = NewUserForm(request.POST)
+                user = NewUserForm(account)
                 login_user = user.save()
                 login(request, login_user)
                 username = user.userid
@@ -64,6 +64,38 @@ def signin(request):
                 messages.success(request, ("there was an error logging in, please try again."))
                 return redirect('login')
     return render(request, 'app/login.html', {})	
+
+def signin(request):
+    if request.POST:
+        form = AuthenticationForm(request=request, data=request.POST)
+        userid = request.POST['username']
+        password = request.POST['password1']
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [userid])
+            account = cursor.fetchone()
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, ("You are now logged in as {username}"))
+                return redirect('register')
+            else:
+                messages.error(request, ("Invalid username or password."))
+        elif account is not None:
+            user = NewUserForm(account)
+            login_user = user.save()
+            login(request, login_user)
+            username = user.userid
+            return render(request, 'app/profile.html', {'users':username})
+        else:
+            messages.success(request, ("Invalid username or password."))
+    form = AuthenticationForm()
+    return render(request,
+                    "app/login.html",
+                    context={"form":form})
+
 
 def signout(request):
 	logout(request)
