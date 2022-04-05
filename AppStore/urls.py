@@ -27,6 +27,6 @@ urlpatterns = [
     path('login/', app.views.signin, name='login'),
     path('logout', app.views.signout, name='logout'),
     path('search/', app.views.search, name='search'),
-    path('search/view', app.views.view, name='search/view'),
+    path('search/view/<int:id>', app.views.view, name='search/view'),
     path('view/<int:id>', app.views.view, name='view')
 ]
