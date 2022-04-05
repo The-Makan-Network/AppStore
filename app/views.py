@@ -103,7 +103,8 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
-def search(request, qns):
+def search(request):
+    qns = request.POST['searched']
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from allusers u, products p WHERE u.userid LIKE '%s%' OR p.name LIKE '%s%'", [qns])
         searched = cursor.fetchall()
