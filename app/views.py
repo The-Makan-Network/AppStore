@@ -158,7 +158,7 @@ def search(request):
     param = '{}%'.format(qns)
     sql = "SELECT * FROM products WHERE name LIKE %s"
     with connection.cursor() as cursor:
-        cur.execute(sql, (param,))
+        cursor.execute(sql, (param,))
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
