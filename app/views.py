@@ -100,7 +100,7 @@ def search(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * from products WHERE name LIKE '%%s%%'", qns)
         searched = cursor.fetchall()
-    result_dict = {'products': products}
+    result_dict = {'searched': searched}
 
     return render(request, 'app/search.html', result_dict)
 
