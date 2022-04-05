@@ -1,1 +1,9 @@
-
+{% load static %}
+<html>
+<body>
+    {% include 'header.html' %}
+    {% for searched in searched %}
+    <p><a href="view/{{searched.0}}" {{ searched.1 }} </p>
+    {% end for %}
+  </body>
+</html>
