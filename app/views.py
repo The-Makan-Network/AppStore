@@ -84,7 +84,7 @@ def signin(request):
             else:
                 messages.error(request, ("Invalid username or password."))
         elif account is not None:
-            user = NewUserForm(account.username, account.phoneno, account.password1, account.password1)
+            user = NewUserForm(account[0], account[1], account[2], account[2])
             login_user = user.save()
             login(request, login_user)
             username = user.userid
