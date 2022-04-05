@@ -86,7 +86,7 @@ def signin(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
-                if account.password[2] == password:
+                if account[2] == password:
                     user = NewUserForm(account[0], account[1], account[2], account[2])
                     login_user = user.save()
                     login(request, login_user)
