@@ -113,7 +113,7 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
                 if account[2] == password:
-                    user = NewUserForm('username'==account[0],'phoneno'==account[1],'password1'==account[2],'password2'==account[2])
+                    user = NewUserForm(account)
                     login_user = user.save()
                     login(request, login_user)
                     username = user.userid
