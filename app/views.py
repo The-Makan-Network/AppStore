@@ -93,7 +93,8 @@ def signin(request):
                     username = user.userid
                     return render(request, 'app/profile.html', {'users':username})
                 else:
-                    messages.success(request, ("Invalid username or password. 2"))
+                    print(account[2], password)
+                    messages.success(request, (("You are now logged in as {{password}}")))
     form = AuthenticationForm()
     return render(request,
                     "app/login.html",
