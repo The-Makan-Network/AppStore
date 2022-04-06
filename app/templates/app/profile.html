@@ -8,14 +8,17 @@
   {% include 'app/header.html' %}
     <h3> Profile Details of {{ user.0 }} </h3>
     <h2> Listings </h2>
-      <table border=1>
-        <thead>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Minimum Order </th>
-        </thead>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ProductID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Minimum Order</th>
+    </tr>
+  </thead>
+  <tbody>
         {% if list %}
         {% for list in list %}
         <tr>
@@ -26,16 +29,20 @@
         </tr>
         {% endfor %}
         {% endif %}
-    </table>
+  </tbody>
+  <br></br>
   <h2> Transactions Made </h2>
-      <table border=1>
-        <thead>
-            <th>Product ID</th>
-            <th>Seller ID</th>
-            <th>Quantity Bought</th>
-            <th>Delivery Method Chosen</th>
-            <th>Order Status</th>
-        </thead>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ProductID</th>
+      <th scope="col">SellerID</th>
+      <th scope="col">Quantity Bought</th>
+      <th scope="col">Delivery Chosen</th>
+      <th scope="col">Order Status</th>
+    </tr>
+  </thead>
+  <tbody>
         {% if trans %}
         {% for trans in trans %}
         <tr>
@@ -47,9 +54,9 @@
         </tr>
         {% endfor %}
         {% endif %}
-    </table>
+  </tbody>
+</table>
+
 </body>
 </html>
           
-    
- 
