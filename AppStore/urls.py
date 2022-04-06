@@ -26,7 +26,8 @@ urlpatterns = [
     path('profile/<str:id>', app.views.profile, name='profile'),
     path('login/', app.views.signin, name='login'),
     path('logout', app.views.signout, name='logout'),
-    path('search/', app.views.search, name='search'),
+    path('search_products/', app.views.search_products, name='search'),
+    path('search_users/', app.views.search_users, name='search'),
     path('search/view/<int:id>', app.views.view, name='search/view'),
     path('view/<int:id>', app.views.view, name='view')
 ]
