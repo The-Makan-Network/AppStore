@@ -26,7 +26,9 @@
             <td> {{ list.3 }} </td>
             <td> {{ list.4 }} </td>
             <td> {{ list.7 }} </td>
-          <td> <a href="{% 'view' list.2 %}"><button>View</button></a> </td>
+          <td> <div class="viewbutton">
+                      <a href={% url 'view' list.2 %} button class="btn btn-outline-dark" type="button">View More</a>
+                    </div> </td>
         </tr>
         {% endfor %}
         {% endif %}
@@ -53,7 +55,9 @@
             <td> {{ trans.4 }} </td>
             <td> {{ trans.5 }} </td>
             <td> {{ trans.6 }} </td>
-          <td> <a href="{% 'view' trans.3 %}"><button>View</button></a> </td>
+          <td> <div class="viewbutton">
+                      <a href={% url 'view' trans.3 %} button class="btn btn-outline-dark" type="button">View More</a>
+                    </div> </td>
         </tr>
         {% endfor %}
         {% endif %}
