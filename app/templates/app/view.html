@@ -57,6 +57,7 @@
     
  <h4> Purchase {{ cust.2 }} </h4>  
 <form method = "POST">
+    {% csrf_token %}
   <p><b><i>Delivery Method</i></b></p>
   <input type="radio" id="housedelivery" name="delivery" value="delivery">
   <label for="housedelivery">delivery</label><br>
@@ -69,7 +70,7 @@
   <input type="number" id="qty" name="qty">
   <input type="hidden" id="s_id" name="s_id" value="{{ cust.1 }}">
     <input type="hidden" id="p_id" name="p_id" value="{{ cust.0 }}">
-  <input type="submit" value="Submit">
+    <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">Buy Me</a>
 </form>
     
 </html>
