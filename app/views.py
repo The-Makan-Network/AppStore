@@ -119,7 +119,7 @@ def signin(request):
                     #created = UserCreationForm(account)
                     user = NewUserForm(created)
                     #login_user = user.save()
-                    login(request, login_user)
+                    login(request, user)
                     username = user.userid
                     return render(request, 'app/profile.html', {'users':username})
                 else:
