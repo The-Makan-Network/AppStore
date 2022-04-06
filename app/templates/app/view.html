@@ -7,8 +7,6 @@
 </head>
 <body>
     {% include 'app/header.html' %}
-    <form method = "POST">
-    {% csrf_token %}
     <h2>Details for {{cust.0}} {{cust.2}}</h2>
     <a href="/">Back to home</a>
     <br/><br/>
@@ -58,6 +56,8 @@
     
     
  <h4> Purchase {{ cust.2 }} </h4>  
+<form method = "POST">
+{% csrf_token %}
   <p><b><i>Delivery Method</i></b></p>
   <input type="radio" id="housedelivery" name="delivery" value="delivery">
   <label for="housedelivery">delivery</label><br>
@@ -70,7 +70,8 @@
   <input type="number" id="qty" name="qty">
   <input type="hidden" id="s_id" name="s_id" value="{{ cust.1 }}">
     <input type="hidden" id="p_id" name="p_id" value="{{ cust.0 }}">
-    <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">Buy Me</a>
+  <input type="submit" value="Submit">
+    
 </form>
     
 </html>
