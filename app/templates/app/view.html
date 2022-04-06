@@ -71,8 +71,8 @@ Delivery
   </div>
     </form>
     <input type="hidden" name="s_id" id="s_id" value="{{ cust.1 }}"/>
-    <div class="container">
-        <button type="submit"><a href="{% url 'purchase' %}">Purchase </a></button>
-        </div>
+    <div class="viewbutton">
+        <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">View More</a>
+    </div>
     
 </html>
