@@ -202,7 +202,7 @@ def purchase(request):
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
                 , [b_id, s_id, p_id, qty, deliver, "pending"])
         messages.success(request, f'You bought {qty}x of this item.')
-        return render(request, 'app/view.html', {p_id})
+        return render(request, 'app/view.html', {'pid':p_id})
 
 """
 def signin(request):
