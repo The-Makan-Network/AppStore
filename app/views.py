@@ -121,7 +121,7 @@ def signin(request):
                     #login_user = created.save()
                     login(request, created)
                     messages.success(request, f'Welcome, You logged in to {username}')
-                    return redirect('profile', {username})
+                    return redirect('home')
                 else:
                     messages.success(request, f'Invalid, You logged in to password {account[2]}')
             messages.success(request, f'{username} {password}')	
