@@ -36,10 +36,16 @@
       {% endif %}
 
       </ul>
-      <form class="d-flex" method=POST action="search/">
+      <form class="d-flex" method=POST action="search_products/">
         {% csrf_token %}
 
-        <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
+        <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+      <form class="d-flex" method=POST action="search_users/">
+        {% csrf_token %}
+
+        <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary" type="submit">Search</button>
       </form>
     </div>
