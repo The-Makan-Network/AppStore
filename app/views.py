@@ -193,7 +193,7 @@ def search_users(request):
 
 def purchase(request):
     deliver = request.GET['delivery']
-    b_id = request.GET.username
+    b_id = request.user.username
     s_id = request.GET['s_id']
     p_id = request.GET['p_id']
     qty = request.GET['qty']
