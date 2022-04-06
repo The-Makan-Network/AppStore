@@ -162,9 +162,12 @@ def view(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
         customer = cursor.fetchone()
-    result_dict = {'cust': customer}
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+        order = cursor.fetchone()
+	
+    #result_dict = {'cust': customer}
 
-    return render(request,'app/view.html',result_dict)
+    return render(request,'app/view.html',{'cust':customer, 'order':order})
 
 def search_products(request):
     qns = request.POST['searched']
