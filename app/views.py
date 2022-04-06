@@ -183,7 +183,6 @@ def search_users(request):
 
     return render(request, 'app/search_users.html', result_dict)
 
-
 """
 def signin(request):
     if request.method == 'POST':
