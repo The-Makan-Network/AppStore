@@ -201,7 +201,8 @@ def purchase(request):
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
                 , [b_id, s_id, p_id, qty, deliver, "pending"])
-        return render(request, 'app/profile.html', {user.username})
+        messages.success(request, f'You bought {qty}x of this item.')
+        return render(request, 'app/view.html', {p_id})
 
 """
 def signin(request):
