@@ -202,8 +202,10 @@ def purchase(request):
                 , [b_id, s_id, p_id, qty, deliver, "pending"])
         cursor.execute("SELECT * FROM products WHERE productid = %s", [p_id])
         customer = cursor.fetchone()
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [p_id])
+        order = cursor.fetchone()
         messages.success(request, f'You bought {qty}x of this item.')
-        return render(request, 'app/view.html', {'cust':customer})
+        return render(request, 'app/view.html', {'cust':customer, 'order':order})
 
 """
 def signin(request):
