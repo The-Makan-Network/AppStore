@@ -12,6 +12,11 @@
     <br/><br/>
     <table style='text-align:left'>
         <tr>
+            <th>Seller ID</th>
+            <td>:</td>
+            <td name ="s_id"> {{ cust.1 }} </td>
+        </tr>
+        <tr>
             <th>Product ID</th>
             <td>:</td>
             <td name ="p_id"> {{ cust.0 }} </td>
@@ -68,7 +73,6 @@ Delivery
     
     <form method="post">
           {% csrf_token %}
-  <input type="hidden" name="s_id" value="{{ cust.1 }}"/>
   <div class="container">
     <input type="number" placeholder="Enter Quantity" name="qty" required>
   </div>
