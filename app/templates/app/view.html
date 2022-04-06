@@ -48,16 +48,18 @@
         </tr>
     </table>
     <br></br>
+    
+    
  <h4> Purchase {{ cust.2 }} </h4>  
  <label><b><i>Delivery Method</i></b></label>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="delivery" id="housedelivery" checked>
+  <input class="form-check-input" type="radio" name="delivery" id="housedelivery" value="delivery">
   <label class="form-check-label" for="housedelivery">
 Delivery
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="delivery" id="pickup">
+  <input class="form-check-input" type="radio" name="delivery" id="pickup" value="self pickup">
   <label class="form-check-label" for="pickup">
     Self pickup
   </label>
@@ -66,13 +68,13 @@ Delivery
     
     <form method="post">
           {% csrf_token %}
+  <input type="hidden" name="s_id" value="{{ cust.1 }}"/>
   <div class="container">
     <input type="number" placeholder="Enter Quantity" name="qty" required>
   </div>
-    </form>
-    <input type="hidden" name="s_id" id="sellerid" value="{{ cust.1 }}"/>
     <div class="viewbutton">
-        <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">View More</a>
+        <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">Buy Me!</a>
     </div>
+    </form>
     
 </html>
