@@ -144,10 +144,12 @@ def profile(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
         user = cursor.fetchone()
+        cursor.execute("SELECT * FROM transactions WHERE b_id =%s"), [id])
+        trans = cursor.fetchall()
 
     result_dict = {'user': user}
 
-    return render(request, 'app/profile.html', result_dict)
+    return render(request, 'app/profile.html', {'user': user, 'trans':trans})
 
 
 def view(request, id):
