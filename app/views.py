@@ -164,7 +164,7 @@ def view(request, id):
         customer = cursor.fetchone()
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
         order = cursor.fetchone()
-	if order is None:
+        if order is None:
             order = 0
 	
     #result_dict = {'cust': customer}
