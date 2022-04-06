@@ -71,8 +71,21 @@
   <input type="hidden" id="s_id" name="s_id" value="{{ cust.1 }}">
   <input type="hidden" id="p_id" name="p_id" value="{{ cust.0 }}">
   <input type="submit" value="Submit">
-
-    
+  
 </form>
     
+        <div class="container">
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            {% endfor %}
+          {% endif %}
+
+          {% block content %}
+          {% endblock %}
+        </div>
 </html>
