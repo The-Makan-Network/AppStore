@@ -197,12 +197,13 @@ def purchase(request):
     s_id = request.GET['s_id']
     p_id = request.GET['p_id']
     qty = request.GET['qty']
-    #d_method = request.POST['delivery']
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
                 , [b_id, s_id, p_id, qty, deliver, "pending"])
+	cursor.execute("SELECT * FROM products WHERE productid = %s", [p_id])
+	item = cursor.fetchone()
         messages.success(request, f'You bought {qty}x of this item.')
-        return render(request, 'app/view.html', {'pid':p_id})
+        return render(request, 'app/view.html', {'item':item})
 
 """
 def signin(request):
