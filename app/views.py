@@ -121,6 +121,7 @@ def signin(request):
                     #login_user = user.save()
                     login(request, user)
                     username = user.userid
+                    messages.success(request, f'Welcome, You logged in to {user.username}')
                     return render(request, 'app/profile.html', {'users':username})
                 else:
                     messages.success(request, f'Invalid, You logged in to password {account[2]}')
