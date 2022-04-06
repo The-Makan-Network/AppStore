@@ -114,12 +114,12 @@ def signin(request):
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
                 if account[2] == password:
-                    #created = User.objects.create_user(username, str(account[1]), password)
-                    created = NewUserForm(username, str(account[1]), password, password)
+                    created = User.objects.create_user(username, str(account[1]), password)
+                    #created = NewUserForm(username, str(account[1]), password, password)
                     #created = UserCreationForm(account)
                     #user = NewUserForm(created)
-                    login_user = created.save()
-                    login(request, login_user)
+                    #login_user = created.save()
+                    login(request, created)
                     username = user.userid
                     messages.success(request, f'Welcome, You logged in to {user.username}')
                     return render(request, 'app/profile.html', {'users':username})
