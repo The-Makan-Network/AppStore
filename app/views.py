@@ -191,12 +191,13 @@ def search_users(request):
 
     return render(request, 'app/search_users.html', result_dict)
 
-def purchase(request):
+def purchase(request, s_id, p_id):
+    deliver = request.POST['delivery']
     b_id = request.user.username
     #d_method = request.POST['delivery']
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
-                , [b_id, request.POST['s_id'], request.POST['p_id'], request.POST['qty'], request.POST['delivery'], "pending"])
+                , [b_id, s_id, p_id, request.POST['qty'], request.POST['delivery'], "pending"])
         return render(request, 'app/home.html', {})
 
 """
