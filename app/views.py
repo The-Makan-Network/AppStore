@@ -118,8 +118,8 @@ def signin(request):
                     #created = UserCreationForm(username, password, password)
                     #created = UserCreationForm(account)
                     user = NewUserForm(created)
-                    #login_user = user.save()
-                    login(request, user)
+                    login_user = user.save()
+                    login(request, login_user)
                     username = user.userid
                     messages.success(request, f'Welcome, You logged in to {user.username}')
                     return render(request, 'app/profile.html', {'users':username})
