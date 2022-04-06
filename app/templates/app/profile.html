@@ -28,6 +28,10 @@
                     <div class="viewbutton">
                       <a href={% url 'view' trans.2 %} button class="btn btn-outline-dark" type="button">View Product Listing</a>
                     </div> 
+                    <form method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ trans.2 }}"/>
+                    </form>
         </tr>
         {% endfor %}
         {% endif %}
