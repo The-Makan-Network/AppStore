@@ -42,5 +42,13 @@
             <td> {{ cust.7 }} </td>
         </tr>
     </table>
-</body>
+    <form method="post">
+          {% csrf_token %}
+<input type="hidden" name="id" value="{{trans.2}}"/>
+  <div class="container">
+    <input type="number" placeholder="Enter Quantity" name="qty" required>
+  </div>
+    <div class="container">
+    <button type="submit">Purchase</button>
+  </div
 </html>
