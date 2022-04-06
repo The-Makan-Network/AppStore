@@ -200,7 +200,7 @@ def purchase(request):
     #d_method = request.POST['delivery']
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
-                , [b_id, s_id, p_id, qty, delivery, "pending"])
+                , [b_id, s_id, p_id, qty, deliver, "pending"])
         return render(request, 'app/home.html', {})
 
 """
