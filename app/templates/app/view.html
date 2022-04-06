@@ -19,7 +19,7 @@
         <tr>
             <th>Product ID</th>
             <td>:</td>
-            <td name ="p_id"> {{ cust.0 }} </td>
+            <td> {{ cust.0 }} </td>
         </tr>
         <tr>
             <th>Category</th>
@@ -69,6 +69,7 @@
   <label for="qty"><b><i>Quantity:</i></b></label>
   <input type="number" id="qty" name="qty">
   <input type="hidden" id="s_id" name="s_id" value="{{ cust.1 }}">
+  <input type="hidden" id="p_id" name="s_id" value="{{ cust.0 }}">
 <a href="{% url 'purchase' %}" button class="btn btn-outline-dark" type="button">View More</a>
 
     
