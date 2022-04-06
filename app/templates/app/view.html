@@ -56,7 +56,7 @@
     
     
  <h4> Purchase {{ cust.2 }} </h4>  
-<form action = "purchase">
+<form action = "{% url 'purchase' %}">
 {% csrf_token %}
   <p><b><i>Delivery Method</i></b></p>
   <input type="radio" id="housedelivery" name="delivery" value="delivery">
