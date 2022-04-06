@@ -120,7 +120,7 @@ def signin(request):
                     #user = NewUserForm(created)
                     #login_user = created.save()
                     login(request, created)
-                    username = user.userid
+                    username = user.username
                     messages.success(request, f'Welcome, You logged in to {user.username}')
                     return render(request, 'app/profile.html', {'users':username})
                 else:
