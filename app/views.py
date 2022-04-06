@@ -152,7 +152,7 @@ def profile(request, id):
 
     result_dict = {'user': user}
 
-    return render(request, 'app/profile.html', {'user': user, 'list':list})
+    return render(request, 'app/profile.html', {'user': user, 'list':list, 'trans':trans})
 
 
 def view(request, id):
