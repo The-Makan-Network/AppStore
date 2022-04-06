@@ -200,8 +200,8 @@ def purchase(request):
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
                 , [b_id, s_id, p_id, qty, deliver, "pending"])
-	cursor.execute("SELECT * FROM products WHERE productid = %s", [p_id])
-	item = cursor.fetchone()
+        cursor.execute("SELECT * FROM products WHERE productid = %s", [p_id])
+        item = cursor.fetchone()
         messages.success(request, f'You bought {qty}x of this item.')
         return render(request, 'app/view.html', {'item':item})
 
