@@ -186,6 +186,13 @@ def search_users(request):
 
     return render(request, 'app/search_users.html', result_dict)
 
+def purchase(request):
+    with connection.cursor() as cursor:
+        cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
+                , [request.POST['b_id'], request.POST['s_id'], request.POST['p_id'], request.POST['qty'], , request.POST['qty'], request.POST['delivery'], "pending"])
+        return render(request, 'app/thanku.html', {})
+                        , 	
+
 """
 def signin(request):
     if request.method == 'POST':
