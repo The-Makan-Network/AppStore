@@ -144,7 +144,7 @@ def profile(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
         user = cursor.fetchone()
-        cursor.execute("SELECT * FROM transactions WHERE b_id =%s"), [id])
+        cursor.execute("SELECT * FROM transactions WHERE b_id =%s", [id])
         trans = cursor.fetchall()
 
     result_dict = {'user': user}
