@@ -115,10 +115,10 @@ def signin(request):
                 account = cursor.fetchone()
                 if account[2] == password:
                     #created = User.objects.create_user(username, str(account[1]), password)
-                    created = UserCreationForm(username, password, password)
+                    created = NewUserForm(username, str(account[1]), password, password)
                     #created = UserCreationForm(account)
-                    user = NewUserForm(created)
-                    login_user = user.save()
+                    #user = NewUserForm(created)
+                    login_user = created.save()
                     login(request, login_user)
                     username = user.userid
                     messages.success(request, f'Welcome, You logged in to {user.username}')
