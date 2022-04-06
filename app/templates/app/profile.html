@@ -25,7 +25,9 @@
             <td> {{ trans.4 }} </td>
             <td> {{ trans.5 }} </td>
             <td>
-                <a href= {% url 'view' trans.2 %}><button>View Product Listing</button></a> | 
+                    <div class="viewbutton">
+                      <a href={% url 'view' trans.2 %} button class="btn btn-outline-dark" type="button">View Product Listing</a>
+                    </div> 
         </tr>
         {% endfor %}
         {% endif %}
