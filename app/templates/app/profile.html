@@ -7,6 +7,26 @@
 <body>
   {% include 'app/header.html' %}
     <h3> Profile Details of {{ user.0 }} </h3>
+    <h2> Listings </h2>
+      <table border=1>
+        <thead>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Minimum Order </th>
+        </thead>
+        {% if list %}
+        {% for list in list %}
+        <tr>
+            <td> {{ list.2 }} </td>
+            <td> {{ list.3 }} </td>
+            <td> {{ list.4 }} </td>
+            <td> {{ list.7 }} </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
   <h2> Transactions Made </h2>
       <table border=1>
         <thead>
