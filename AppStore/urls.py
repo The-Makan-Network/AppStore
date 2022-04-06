@@ -29,5 +29,6 @@ urlpatterns = [
     path('search_products/', app.views.search_products, name='search_products'),
     path('search_users/', app.views.search_users, name='search_users'),
     path('search/view/<int:id>', app.views.view, name='search/view'),
-    path('view/<int:id>', app.views.view, name='view')
+    path('view/<int:id>', app.views.view, name='view'),
+    path('purchase', app.views.purchase, name='purchase')
 ]
