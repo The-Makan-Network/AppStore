@@ -6,10 +6,35 @@
 </head>
 <body>
   {% include 'app/header.html' %}
-    <h3> Profile </h3>
-  {{user.0}}
-  {{user.1}}
-  <h2> nothing </h2>
+    <h3> Profile Details of {{ user.0 }} </h3>
+  <h2> Transactions Made </h2>
+      <table style='text-align:left'>
+        <tr>
+            <th>Product ID</th>
+            <td>:</td>
+            <td> {{ trans.2 }} </td>
+        </tr>
+        <tr>
+            <th>Seller ID</th>
+            <td>:</td>
+            <td> {{ trans.1 }} </td>
+        </tr>
+        <tr>
+            <th>Quantity Bought</th>
+            <td>:</td>
+            <td> {{ trans.3 }} </td>
+        </tr>
+        <tr>
+            <th>Delivery Method Chosen</th>
+            <td>:</td>
+            <td> {{ trans.4 }} </td>
+        </tr>
+        <tr>
+            <th>Current Order Status</th>
+            <td>:</td>
+            <td> {{ trans.5 }} </td>
+        </tr>
+    </table>
 </body>
 </html>
           
