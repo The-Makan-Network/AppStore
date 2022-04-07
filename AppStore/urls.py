@@ -30,5 +30,8 @@ urlpatterns = [
     path('search_users/', app.views.search_users, name='search_users'),
     path('search/view/<int:id>', app.views.view, name='search/view'),
     path('view/<int:id>', app.views.view, name='view'),
-    path('purchase', app.views.purchase, name='purchase')
+    path('purchase', app.views.purchase, name='purchase'),
+    path('sort_top', app.views.sort_top, name='sort_top'),
+    path('sort_pricedown', app.views.sort_pricedown, name='sort_pricedown'),
+    path('sort_priceup', app.views.sort_priceup, name='sort_priceup')
 ]
