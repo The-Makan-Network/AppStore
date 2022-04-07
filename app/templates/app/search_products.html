@@ -14,7 +14,7 @@
             {% if searched %}
                 
 <div class="btn-group" role="group">
-        <p text-align=center>Sort by: {{ qns.0 }}</p>
+        <p text-align=center>Sort by: {{ qns }}</p>
         <form action = "{% url 'sort_top' %}">
 
         <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
@@ -135,7 +135,7 @@ h2, h3 {
   margin: 0.2em auto;
 }
 
-.sortbutton {
+.btn-group {
   float: left;
   clear: left;
   width: 100%;
@@ -145,6 +145,7 @@ h2, h3 {
   text-align: center;
   margin: 0.2em auto;
 }
+
 
 
 input:focus {
