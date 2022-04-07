@@ -17,18 +17,18 @@
         <p text-align=center>Sort by: {{ qns }}</p>
         <form action = "{% url 'sort_top' %}">
 
-        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns }}">
         <input class="btn btn-secondary" type="submit" value="Top Sales">
 
         </form>
         
         <form action = "{% url 'sort_pricedown' %}">
-        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns }}">
         <input class="btn btn-secondary" type="submit" value="Price High to Low">
         </form>
         
         <form action = "{% url 'sort_priceup' %}">
-        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns }}">
         <input class="btn btn-secondary" type="submit" value="Price Low to High">
         </form>
         </div>
