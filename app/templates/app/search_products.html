@@ -12,14 +12,24 @@
         </div>
         <div class="listing-section">
             {% if searched %}
-                <form>
-                    <div class="topsalesbutton">
+<div class="btn-group" role="group">
         <p text-align=center>Sort by: </p>
-        <input type="hidden" id="p_id" name="name" value="{{ qns.0 }}">
-        <input class="btn btn-info" type="submit" value="Top Sales">
-        <input class="btn btn-info" type="submit" value="Alphabetically">
+        <form action = "{% url 'sort_top' %}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input class="btn btn-secondary" type="submit" value="Top Sales">
+
+        </form>
+        <form action = "{% url 'sort_pricedown' %}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input class="btn btn-secondary" type="submit" value="Price High to Low">
+        </form>
+        <form action = "{% url 'sort_priceup' %}">
+        <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
+        <input class="btn btn-secondary" type="submit" value="Price Low to High">
+        </form>
         </div>
                 </form>
+ 
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
@@ -121,7 +131,7 @@ h2, h3 {
   margin: 0.2em auto;
 }
 
-.topsalesbutton {
+.sortbutton {
   float: left;
   clear: left;
   width: 100%;
