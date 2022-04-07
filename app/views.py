@@ -179,7 +179,7 @@ def search_products(request):
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
-    return render(request, 'app/search_products.html', result_dict)
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
 
 def search_users(request):
     qns = request.POST['searched']
@@ -206,6 +206,33 @@ def purchase(request):
         order = cursor.fetchone()
         messages.success(request, f'You bought {qty}x of this item.')
         return render(request, 'app/view.html', {'cust':customer, 'order':order})
+
+def sort_top(request):
+    qns = request.POST['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY coalesce(sum(t.qty),0) DESC", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
+
+def sort_priceup(request):
+    qns = request.POST['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY p.price;", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
+
+def sort_pricedown(request):
+    qns = request.POST['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY p.price DESC;", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
 
 """
 def signin(request):
