@@ -12,11 +12,13 @@
         </div>
         <div class="listing-section">
             {% if searched %}
+                <form>
                     <div class="topsalesbutton">
                                 <p text-align=center>Sort by: </p>
         <input class="btn btn-info" type="submit" value="Top Sales">
         <input class="btn btn-info" type="submit" value="Alphabetically">
         </div>
+                </form>
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
