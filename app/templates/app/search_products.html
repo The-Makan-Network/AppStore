@@ -13,8 +13,10 @@
         <div class="listing-section">
             {% if searched %}
 <div class="btn-group" role="group">
+        {%for qns in qns %}
         <p text-align=center>Sort by: </p>
         <form action = "{% url 'sort_top' %}">
+
         <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
         <input class="btn btn-secondary" type="submit" value="Top Sales">
 
@@ -27,8 +29,9 @@
         <input type="hidden" id="qns" name="qns" value="{{ qns.0 }}">
         <input class="btn btn-secondary" type="submit" value="Price Low to High">
         </form>
+        {% endfor %}
         </div>
-                </form>
+
         <br></br>
             {% for searched in searched %}
             <div class="product">
