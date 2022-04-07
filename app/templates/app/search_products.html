@@ -10,12 +10,13 @@
         <div class="mt-4 mb-4 col-md-12 text-center">
           <h1>Specific Yummies You Looked For</h1>
         </div>
-        <div class="topsalesbutton">
-        <a class="btn btn-info" href="#" role="button">Sort by Top Sales</a>
-        <a class="btn btn-info" href="#" role="button">Sort Alphabetically</a>
-        </div>
         <div class="listing-section">
             {% if searched %}
+                    <div class="topsalesbutton">
+                                <p text-align=center>Sort by: </p>
+        <input class="btn btn-info" type="submit" value="Top Sales">
+        <input class="btn btn-info" type="submit" value="Alphabetically">
+        </div>
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
